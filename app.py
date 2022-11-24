@@ -38,7 +38,8 @@ def clean_data():
     global to_review_values
     for index, row in enumerate(raw_data):
         *_, almacen, _, c_articulo, stock_min, stock_max = row.strip('\n').split(',')
-        temp_match = almacen+c_articulo
+        temp_match = (almacen.strip().replace(' ', ''), c_articulo.replace('-', '').replace(' ', '').replace('/', ''))
+        print(temp_match)
         #print(temp_match.__repr__())
         temp_index = generate_index()
         if temp_match in EQUAL_VALUES_ALM_X_PROD:
